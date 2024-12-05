@@ -11,6 +11,7 @@ abstract class Shape {
 
 class Circle extends Shape {
   double radius;
+  //super: calls the Parent Constructor to initialize properties and methods defined there (V.V.I)
   Circle(this.radius) : super("Circle");
 
   @override
