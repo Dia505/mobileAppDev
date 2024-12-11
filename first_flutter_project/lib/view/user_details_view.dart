@@ -32,7 +32,7 @@ class _UserDetailsViewState extends State<UserDetailsView> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('User Details View'),
+        title: const Text('User Registration View'),
         backgroundColor: Colors.grey,
         centerTitle: true,
         elevation: 0,

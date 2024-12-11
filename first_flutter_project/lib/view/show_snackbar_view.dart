@@ -1,3 +1,4 @@
+import 'package:first_flutter_project/core/common/common_snackbar.dart';
 import 'package:flutter/material.dart';
 
 class ShowSnackbarView extends StatefulWidget {
@@ -8,32 +9,6 @@ class ShowSnackbarView extends StatefulWidget {
 }
 
 class _ShowSnackbarViewState extends State<ShowSnackbarView> {
-
-//Function for snackbar
-//ScaffoldMessenger - the container required to display the snack bar
-  _showSnackBar1() {
-    ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(
-        content: Text("Show Message 1"),
-        duration: Duration(seconds: 1),
-
-        backgroundColor: Colors.green,
-        behavior: SnackBarBehavior.floating,
-      )
-    );
-  }
-
-  _showSnackBar2() {
-    ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(
-        content: Text("Show Message 2"),
-        duration: Duration(seconds: 1),
-
-        backgroundColor: Colors.purple,
-        behavior: SnackBarBehavior.floating,
-      )
-    );
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -49,12 +24,17 @@ class _ShowSnackbarViewState extends State<ShowSnackbarView> {
         children: [
           ElevatedButton(
             //function called here, using arrow function
-            onPressed: () => _showSnackBar1(), 
+            onPressed: () => showSnackBar(
+              context: context,
+              message: "Message A"), 
             child: const Text("Snackbar 1")
           ),
 
           ElevatedButton(
-            onPressed: () => _showSnackBar2(), 
+            onPressed: () => showSnackBar(
+              context: context,
+              message: "Message B",
+              color: Colors.purple), 
             child: const Text("Snackbar 2")
           ),
         ],

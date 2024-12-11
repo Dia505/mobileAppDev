@@ -17,6 +17,7 @@ class UserListView extends StatelessWidget {
 
         itemCount: userList.length,
         itemBuilder: (context, index) {
+          final user = userList[index];
     
           return ListTile(
             leading: const Icon(Icons.wysiwyg),
@@ -24,7 +25,10 @@ class UserListView extends StatelessWidget {
             subtitle: Text(userList[index].city),
             trailing: IconButton(
               onPressed: (){}, 
-              icon: const Icon(Icons.delete))
+              icon: const Icon(Icons.delete)),
+            onTap: () {
+              Navigator.pushNamed(context, "/details", arguments: user);
+            },
           );
         },
       ),
