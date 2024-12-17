@@ -10,6 +10,8 @@
 // import 'package:first_flutter_project/view/user_details_view.dart';
 // import 'package:first_flutter_project/view/user_output_view.dart';
 import 'package:first_flutter_project/view/card_view.dart';
+import 'package:first_flutter_project/view/stack_classwork.dart';
+import 'package:first_flutter_project/view/stack_view.dart';
 import 'package:flutter/material.dart';
 
 class MyApp extends StatelessWidget {
@@ -26,7 +28,7 @@ class MyApp extends StatelessWidget {
       //   "/details": (context) => const UserDetailSingularView(),
       // },
 
-      home: CardView(),
+      home: StackClasswork(),
     );
   }
 }
