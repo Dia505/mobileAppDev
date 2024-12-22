@@ -30,6 +30,12 @@ class StackClasswork extends StatelessWidget {
                     child: Icon(Icons.edit),
                   ),
 
+                  const Text("Stack Assignment", 
+                  style: TextStyle(
+                    fontSize: 20,
+                    fontFamily: "Montserrat Bold"
+                  ),),
+
                   SizedBox(
                     width: 300,
                     child: Image.asset("assets/images/image1.jpg")
