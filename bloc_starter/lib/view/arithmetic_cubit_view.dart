@@ -7,12 +7,12 @@ class ArithmeticCubitView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final _firstController = TextEditingController();
-    final _secondController = TextEditingController();
+    final firstController = TextEditingController();
+    final secondController = TextEditingController();
 
-    final _formKey = GlobalKey<FormState>();
+    final formKey = GlobalKey<FormState>();
 
-    SizedBox _gap = const SizedBox(
+    SizedBox gap = const SizedBox(
       height: 10,
     );
 
@@ -22,27 +22,27 @@ class ArithmeticCubitView extends StatelessWidget {
         centerTitle: true,
       ),
       body: Form(
-        key: _formKey,
+        key: formKey,
         child: Padding(
           padding: const EdgeInsets.all(16.0),
           child: Column(
             children: [
               TextFormField(
-                controller: _firstController,
+                controller: firstController,
                 decoration: const InputDecoration(
                     labelText: "First Number",
                     border: OutlineInputBorder(
                         borderSide: BorderSide(color: Colors.grey))),
               ),
-              _gap,
+              gap,
               TextFormField(
-                controller: _secondController,
+                controller: secondController,
                 decoration: const InputDecoration(
                     labelText: "Second Number",
                     border: OutlineInputBorder(
                         borderSide: BorderSide(color: Colors.grey))),
               ),
-              _gap,
+              gap,
               BlocBuilder<ArithmeticCubit, int>(builder: (context, state) {
                 return Text(
                   "Result: $state",
@@ -50,37 +50,28 @@ class ArithmeticCubitView extends StatelessWidget {
                       fontSize: 28, fontWeight: FontWeight.bold),
                 );
               }),
-              _gap,
+              gap,
               ElevatedButton(
                 onPressed: () {
-                  final first = int.tryParse(_firstController.text) ?? 0;
-                  final second = int.tryParse(_secondController.text) ?? 0;
-                  context.read<ArithmeticCubit>()
-                    ..first = first
-                    ..second = second
-                    ..add();
+                  final first = int.tryParse(firstController.text) ?? 0;
+                  final second = int.tryParse(secondController.text) ?? 0;
+                  context.read<ArithmeticCubit>().add(first, second);
                 },
                 child: const Text("Add"),
               ),
               ElevatedButton(
                 onPressed: () {
-                  final first = int.tryParse(_firstController.text) ?? 0;
-                  final second = int.tryParse(_secondController.text) ?? 0;
-                  context.read<ArithmeticCubit>()
-                    ..first = first
-                    ..second = second
-                    ..subtract();
+                  final first = int.tryParse(firstController.text) ?? 0;
+                  final second = int.tryParse(secondController.text) ?? 0;
+                  context.read<ArithmeticCubit>().subtract(first, second);
                 },
                 child: const Text("Subtract"),
               ),
               ElevatedButton(
                 onPressed: () {
-                  final first = int.tryParse(_firstController.text) ?? 0;
-                  final second = int.tryParse(_secondController.text) ?? 0;
-                  context.read<ArithmeticCubit>()
-                    ..first = first
-                    ..second = second
-                    ..multiply();
+                  final first = int.tryParse(firstController.text) ?? 0;
+                  final second = int.tryParse(secondController.text) ?? 0;
+                  context.read<ArithmeticCubit>().multiply(first, second);
                 },
                 child: const Text("Multiply"),
               )
