@@ -1,15 +1,15 @@
-import 'package:class_assignment_2/cubit/simple_interest_cubit.dart';
+import 'package:class_assignment_2/cubit/temp_converter_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class SimpleInterestView extends StatelessWidget {
-  const SimpleInterestView({super.key});
+class TempConverterView extends StatelessWidget {
+  const TempConverterView({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final principalController = TextEditingController();
-    final timeController = TextEditingController();
-    final rateController = TextEditingController();
+    final tempController = TextEditingController();
+    final firstUnitController = TextEditingController();
+    final secondUnitController = TextEditingController();
 
     final formKey = GlobalKey<FormState>();
 
@@ -19,7 +19,9 @@ class SimpleInterestView extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-          title: const Text("Dia Simple Interest Cubit"), centerTitle: true),
+        title: const Text("Dia Temperature Converter Cubit"),
+        centerTitle: true
+      ),
       body: Padding(
         padding: const EdgeInsets.all(10.0),
         child: Form(
@@ -27,51 +29,51 @@ class SimpleInterestView extends StatelessWidget {
             child: Column(
               children: [
                 TextFormField(
-                  controller: principalController,
+                  controller: tempController,
                   keyboardType: TextInputType.number,
                   decoration: const InputDecoration(
-                      labelText: "Enter the principal amount",
+                      labelText: "Enter the temperature",
                       border: OutlineInputBorder()),
                   validator: (value) {
                     if (value == null || value.isEmpty) {
-                      return "Please enter the principal amount";
+                      return "Please enter the temperature";
                     }
                     return null;
                   },
                 ),
                 gap,
                 TextFormField(
-                  controller: rateController,
+                  controller: firstUnitController,
                   keyboardType: TextInputType.number,
                   decoration: const InputDecoration(
-                      labelText: "Enter the rate",
+                      labelText: "Enter the unit you want to convert from",
                       border: OutlineInputBorder()),
                   validator: (value) {
                     if (value == null || value.isEmpty) {
-                      return "Please enter the rate";
+                      return "Please enter the unit you want to convert from";
                     }
                     return null;
                   },
                 ),
                 gap,
                 TextFormField(
-                  controller: timeController,
+                  controller: secondUnitController,
                   keyboardType: TextInputType.number,
                   decoration: const InputDecoration(
-                      labelText: "Enter the time (in years)",
+                      labelText: "Enter the unit you want to convert to",
                       border: OutlineInputBorder()),
                   validator: (value) {
                     if (value == null || value.isEmpty) {
-                      return "Please enter the time (in years)";
+                      return "Please enter the unit you want to convert to";
                     }
                     return null;
                   },
                 ),
                 gap,
-                BlocBuilder<SimpleInterestCubit, double>(
+                BlocBuilder<TempConverterCubit, double>(
                     builder: (context, state) {
                   return Text(
-                    "SI: $state",
+                    "Temperature: $state",
                     style: const TextStyle(
                         fontSize: 28, fontWeight: FontWeight.bold),
                   );
@@ -79,15 +81,14 @@ class SimpleInterestView extends StatelessWidget {
                 gap,
                 ElevatedButton(
                   onPressed: () {
-                    final principal =
-                        double.tryParse(principalController.text) ?? 0;
-                    final time = double.tryParse(timeController.text) ?? 0;
-                    final rate = double.tryParse(rateController.text) ?? 0;
+                    final temp = double.tryParse(tempController.text) ?? 0;
+                    final firstUnit = firstUnitController.text;
+                    final secondUnit = secondUnitController.text;
                     context
-                        .read<SimpleInterestCubit>()
-                        .calculateSI(principal, time, rate);
+                        .read<TempConverterCubit>()
+                        .convertTemperature(temp, firstUnit, secondUnit);
                   },
-                  child: const Text("Calculate"),
+                  child: const Text("Convert"),
                 ),
               ],
             )),
