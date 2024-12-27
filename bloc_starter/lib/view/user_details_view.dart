@@ -1,6 +1,7 @@
 import 'package:bloc_starter/core/common/user_list_view.dart';
 import 'package:bloc_starter/cubit/user_cubit.dart';
 import 'package:bloc_starter/model/user.dart';
+import 'package:bloc_starter/view/user_output_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -13,9 +14,9 @@ class UserDetailsView extends StatelessWidget {
     final lastNameController = TextEditingController();
     String? city;
 
-    final gap = const SizedBox(height: 8);
+    const gap = SizedBox(height: 8);
 
-    final items = const [
+    const items = [
       DropdownMenuItem(value: "Kathmandu", child: Text("Kathmandu")),
       DropdownMenuItem(value: "Pokhara", child: Text("Pokhara")),
       DropdownMenuItem(value: "Chitwan", child: Text("Chitwan")),
@@ -85,7 +86,10 @@ class UserDetailsView extends StatelessWidget {
               width: double.infinity,
               child: ElevatedButton(
                 onPressed: () {
-                  Navigator.pushNamed(context, "/output");
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const UserOutputView()));
                 },
                 child: const Text("View users"),
               ),
