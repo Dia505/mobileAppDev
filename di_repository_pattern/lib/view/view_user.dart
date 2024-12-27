@@ -1,5 +1,3 @@
-import 'package:di_repository_pattern/data_source/local/local_data_source.dart';
-import 'package:di_repository_pattern/data_source/remote/remote_data_source.dart';
 import 'package:di_repository_pattern/di/di.dart';
 import 'package:di_repository_pattern/model/user.dart';
 import 'package:di_repository_pattern/repository/user_repository.dart';
