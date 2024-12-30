@@ -1,6 +1,7 @@
 //get_it - service locator (dependency injection library)
-  //it provides needed dependencies
+  //It provides needed dependencies
   //helps to work with classes using single instances (prevents memory leak)
+  //Provides a central place to register and retrieve instances of classes
 
 //Using get_it, all objects are created here
 
@@ -19,7 +20,7 @@ void initModule() {
     //eg:- parent classes of UserRepository are RemoteDataSource and LocalDataSource
 
   //registerSingleton - instance is created immediately upon registration (function call)
-  //registerLazySingleton - instance is created only when it is first accessed
+  //registerLazySingleton - instance is created only when it is first accessed, when it isnt used, it is auto-destroyed
   //They both create singleton instances
 
   //Here the object of RemoteDataSource and LocalDataSource is inside the getIt instance

@@ -1,4 +1,4 @@
-import 'package:bloc_starter/cubit/arithmetic_cubit.dart';
+import 'package:bloc_starter/bloc/arithmetic_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -43,7 +43,7 @@ class ArithmeticBlocView extends StatelessWidget {
                         borderSide: BorderSide(color: Colors.grey))),
               ),
               gap,
-              BlocBuilder<ArithmeticCubit, int>(builder: (context, state) {
+              BlocBuilder<ArithmeticBloc, int>(builder: (context, state) {
                 return Text(
                   "Result: $state",
                   style: const TextStyle(
@@ -53,25 +53,40 @@ class ArithmeticBlocView extends StatelessWidget {
               gap,
               ElevatedButton(
                 onPressed: () {
-                  final first = int.tryParse(firstController.text) ?? 0;
-                  final second = int.tryParse(secondController.text) ?? 0;
-                  context.read<ArithmeticCubit>().add(first, second);
+                  if(formKey.currentState!.validate()) {
+                    final first = int.parse(firstController.text);
+                    final second = int.parse(secondController.text);
+
+                    context
+                      .read<ArithmeticBloc>()
+                      .add(AdditionEvent(first, second));
+                  }
                 },
                 child: const Text("Add"),
               ),
               ElevatedButton(
                 onPressed: () {
-                  final first = int.tryParse(firstController.text) ?? 0;
-                  final second = int.tryParse(secondController.text) ?? 0;
-                  context.read<ArithmeticCubit>().subtract(first, second);
+                  if(formKey.currentState!.validate()) {
+                    final first = int.parse(firstController.text);
+                    final second = int.parse(secondController.text);
+
+                    context
+                      .read<ArithmeticBloc>()
+                      .add(SubtractionEvent(first, second));
+                  }
                 },
                 child: const Text("Subtract"),
               ),
               ElevatedButton(
                 onPressed: () {
-                  final first = int.tryParse(firstController.text) ?? 0;
-                  final second = int.tryParse(secondController.text) ?? 0;
-                  context.read<ArithmeticCubit>().multiply(first, second);
+                  if(formKey.currentState!.validate()) {
+                    final first = int.parse(firstController.text);
+                    final second = int.parse(secondController.text);
+
+                    context
+                      .read<ArithmeticBloc>()
+                      .add(MultiplicationEvent(first, second));
+                  }
                 },
                 child: const Text("Multiply"),
               )
