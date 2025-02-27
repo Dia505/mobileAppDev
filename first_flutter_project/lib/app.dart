@@ -28,7 +28,7 @@ class MyApp extends StatelessWidget {
       //   "/details": (context) => const UserDetailSingularView(),
       // },
 
-      home: StackClasswork(),
+      home: StackView(),
     );
   }
 }
